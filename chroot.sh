@@ -2,7 +2,7 @@
 
 export HOSTNAME=localhost
 export USER=anly
-export PASS= 
+export PASS="password"
 export TIMEZONE=Asia/Taipei
 export ROOT_PART=/dev/sda3
 export DM=x #gdm x 
@@ -45,12 +45,16 @@ echo "$USER:$PASS" | chpasswd
 # disable root login
 # passwd -l root
 
-
+if [[ ${DM} -eq gdm ]]; then
+systemctl enable gdm
+sed -i 's/#\(WaylandEnable\)/\1/' /etc/gdm/custom.conf # Wayland is not stable...
+else
 echo "gnome-session" > /home/${USER}/.xinitrc
 cat >> /home/${USER}/.bash_profile << EOF
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -le 3 ]]; then
+if systemctl -q is-active graphical.target && [[ ! \$DISPLAY && \$XDG_VTNR -le 3 ]]; then
     exec startx
 fi
 EOF
+fi
 
 exit
