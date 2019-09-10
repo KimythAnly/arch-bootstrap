@@ -1,6 +1,6 @@
 # Arch Bootstrap Script
 
-My personal scripts for bootstrapping an archlinux system.  
+Forked from https://github.com/leomao/arch-bootstrap/
 
 # Usage
 1. Boot a computer with arch live image.
