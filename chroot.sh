@@ -48,6 +48,7 @@ echo "$USER:$PASS" | chpasswd
 if [[ ${DM} -eq gdm ]]; then
 systemctl enable gdm
 sed -i 's/#\(WaylandEnable\)/\1/' /etc/gdm/custom.conf # Wayland is not stable...
+chage -E -1 gdm
 else
 echo "gnome-session" > /home/${USER}/.xinitrc
 cat >> /home/${USER}/.bash_profile << EOF
