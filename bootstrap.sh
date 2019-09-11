@@ -95,6 +95,7 @@ printer_packages=("cups" "hplip")
 im_packages=(
   "ibus-kkc"
   "ibus-rime"
+  "ibus-chewing"
 )
 gui_packages=(
   "gnome" "gnome-tweak-tool" "system-config-printer"
