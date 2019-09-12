@@ -9,7 +9,7 @@ EOF
 
 # Google Chrome
 cd ~/Downloads
-git https://aur.archlinux.org/google-chrome.git
+git clone https://aur.archlinux.org/google-chrome.git
 cd google-chrome
 makepkg -si
 
