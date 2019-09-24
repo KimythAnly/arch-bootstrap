@@ -13,6 +13,11 @@ git clone https://aur.archlinux.org/google-chrome.git
 cd google-chrome
 makepkg -si
 
+# Chrome open file issue
+pacman -S perl-file-mimeinfo
+mimeopen -n /home/anly/Documents
+
+
 
 # oh my zsh!
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
