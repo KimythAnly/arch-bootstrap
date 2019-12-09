@@ -3,7 +3,7 @@
 ROOT_PART=/dev/sda3
 SWAP_PART=/dev/sda2
 EFI_PART=/dev/sda1
-#HOME_PART=/dev/sdb2
+HOME_PART=/dev/sda4
 #VAR_PART=/dev/sdb1
 
 mkfs.fat -F32 ${EFI_PART}
@@ -13,10 +13,12 @@ mkfs.ext4 ${ROOT_PART}
 
 mount ${ROOT_PART} /mnt
 [[ -n ${SWAP_PART} ]] && swapon ${SWAP_PART}
-# if [[ -n ${HOME_PART} ]]; then
-#   mkdir -p /mnt/home
-#   mount ${HOME_PART} /mnt/home
-# fi
+
+if [[ -n ${HOME_PART} ]]; then
+  mkfs.ext4 ${HOME_PART}
+  mkdir -p /mnt/home
+  mount ${HOME_PART} /mnt/home
+fi
 # if [[ -n ${VAR_PART} ]]; then
 #   mkdir -p /mnt/var
 #   mount ${VAR_PART} /mnt/var
